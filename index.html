@@ -1,0 +1,1788 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMART X 8 Hackathon 2026 - NSN CET KARUR</title>
+    <meta name="description"
+        content="SMART X 8: 8-Hour National AI & Innovation Challenge organized by Department of Artificial Intelligence & Data Science, NSN College of Engineering and Technology, Karur. ₹25,000 Prize Pool.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Three.js 3D Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Dynamic QR Code Generator -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <!-- Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <!-- 3D Three.js WebGL Canvas -->
+    <canvas id="webglCanvas"></canvas>
+
+    <!-- Top Live Ticker -->
+    <div class="top-ticker">
+        <span class="pulse-dot"></span>
+        <span class="ticker-message">8-HOUR HACKATHON REGISTRATIONS OPEN &bull; NATIONAL LEVEL AI &amp; INNOVATION
+            HACKATHON &bull; OCT 23, 2026 &bull; <span class="prize-blink">₹25,000</span> CASH PRIZE POOL</span>
+    </div>
+
+    <!-- ==========================================================
+         MERGED MASTER HEADER: NSN CET BRAND + HACKATHON NAVIGATION
+         ========================================================== -->
+    <div class="master-header-container">
+        <!-- 1. NSN College Brand Banner -->
+        <div class="college-banner">
+            <div class="college-left">
+                <!-- NSN Logo -->
+                <div class="college-logo">
+                    <img src="images/logo.jpeg" alt="NSN CET Logo">
+                </div>
+
+                <!-- College Name & Info -->
+                <div class="college-title">
+                    <h1>
+                        <span class="nsn">N.S.N.</span>
+                        <span class="college">COLLEGE OF ENGINEERING</span>
+                        <span class="and">AND</span>
+                        <span class="technology">TECHNOLOGY</span>
+                    </h1>
+
+                    <div class="college-subline">
+                        <span>(Approved by AICTE, New Delhi &bull; Affiliated to Anna University, Chennai)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- College Right Info -->
+            <div class="college-right-info">
+                <a href="tel:+918489477577" class="college-contact-pill" style="text-decoration:none;"
+                    title="Call Helpline">
+                    <i class="fas fa-phone-volume"></i> 97 88 44 82 43 <br> 80 72 31 75 42
+                </a>
+                <a href="https://maps.google.com/?q=NSN+College+of+Engineering+and+Technology,+Karur" target="_blank"
+                    rel="noopener noreferrer" class="college-location-badge"
+                    style="text-decoration:none; cursor:pointer;" title="Open in Google Maps">
+                    <i class="fas fa-map-pin"></i> Karur - Madurai NH-7, Tamil Nadu <i
+                        class="fas fa-arrow-up-right-from-square" style="font-size:9px;"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- 2. Integrated Hackathon Navigation -->
+        <header class="hackathon-nav">
+            <a href="#" class="nav-brand-logo">
+                <div class="nav-logo-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <div class="nav-logo-text">SMART✘ 𝟖</div>
+            </a>
+            <nav class="nav-links">
+                <a onclick="scrollToSection('tracks')">Themes</a>
+                <a onclick="scrollToSection('schedule')">Details</a>
+                <a onclick="scrollToSection('eligibility')">Eligibility</a>
+                <a onclick="scrollToSection('register')">Register &amp; Pay</a>
+                <a onclick="scrollToSection('contact')">Contact</a>
+                <a href="admin-login.html" class="admin-nav-btn" title="Restricted Admin Login">
+                    <i class="fas fa-shield-alt"></i> Admin Portal
+                </a>
+            </nav>
+        </header>
+    </div>
+
+    <!-- ==========================================================
+         HERO SECTION
+         ========================================================== -->
+    <section class="hero">
+        <!-- Organized by Pill Badge -->
+        <div class="organizer-pill-wrapper">
+            <div class="organizer-pill">
+                <span class="organizer-tag"><i class="fas fa-microchip"></i> ORGANIZED BY</span>
+                <span class="organizer-dept">DEPARTMENT OF ARTIFICIAL INTELLIGENCE AND DATA SCIENCE</span>
+            </div>
+        </div>
+
+        <!-- Title & 3D Floating Logo -->
+        <div class="hero-title-row">
+            <h1 class="hero-main-title">SMART✘ 𝟖 H⏱UR HACKATHON-2K26</h1>
+            <img class="hero-aura-logo" src="images/logo2.jpeg" alt="AI &amp; DS Aura logo">
+        </div>
+
+        <p class="hero-subtitle">
+            <strong>Explore &bull; Innovate &bull; Build &bull; Create Real-World Impact</strong>
+        </p>
+
+        <!-- 3D Cyber Event Showcase Poster Area -->
+        <div class="hero-banner-container" onclick="openPosterModal()" title="Click to view full resolution poster">
+            <div class="hero-banner-frame">
+                <img src="images/END.jpeg" alt="SMART X 8 Hackathon Official Event Poster" class="hero-banner-img" id="heroBannerImg" loading="eager">
+                <div class="poster-overlay-hint">
+                    <span class="hint-pill"><i class="fas fa-expand"></i> Click to View Full Resolution Poster</span>
+                </div>
+            </div>
+            <div class="poster-control-bar" onclick="event.stopPropagation()">
+                <div class="poster-control-left">
+                    <span class="poster-live-dot"></span>
+                    <span class="poster-control-title">Official Event Poster &bull; AI &amp; Innovation Challenge</span>
+                </div>
+                <div class="poster-control-actions">
+                    <button type="button" class="poster-action-btn primary" onclick="openPosterModal()">
+                        <i class="fas fa-search-plus"></i> View Full Poster
+                    </button>
+                    <a href="images/END.jpeg" target="_blank" class="poster-action-btn secondary" title="Open high resolution image in new tab">
+                        <i class="fas fa-external-link-alt"></i> Open Raw
+                    </a>
+                    <a href="images/END.jpeg" download="SMARTX8_Hackathon_Poster.jpeg" class="poster-action-btn secondary" title="Download Official Event Poster">
+                        <i class="fas fa-download"></i> Download
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="poster-highlight-strip">
+            <div class="poster-strip-pill"><i class="fas fa-brain"></i> 8 Innovation Themes</div>
+            <div class="poster-strip-pill"><i class="fas fa-stopwatch"></i> 8-Hour Challenge</div>
+            <div class="poster-strip-pill"><i class="fas fa-trophy" style="color:#fbbf24;"></i> ₹25,000 Cash Pool</div>
+            <div class="poster-strip-pill"><i class="fas fa-id-badge"></i> Official Verified E-Pass</div>
+        </div>
+
+        <!-- Quick Event Details -->
+        <div class="event-details" id="schedule">
+            <div class="detail-card">
+                <div class="detail-card-top">
+                    <span class="detail-label">Challenge Date</span>
+                    <div class="detail-icon"><i class="fas fa-calendar-check"></i></div>
+                </div>
+                <div class="detail-value">OCT 23, 2026</div>
+                <div class="detail-sub">Starts 9:00 AM Sharp</div>
+            </div>
+
+            <div class="detail-card"
+                onclick="window.open('https://maps.google.com/?q=NSN+College+of+Engineering+and+Technology,+Karur', '_blank')"
+                style="cursor: pointer;" title="Open NSN Campus in Google Maps">
+                <div class="detail-card-top">
+                    <span class="detail-label">Location / Campus</span>
+                    <div class="detail-icon"><i class="fas fa-location-dot"></i></div>
+                </div>
+                <div class="detail-value">NSN CAMPUS</div>
+                <div class="detail-sub">Main Auditorium, Karur <i class="fas fa-arrow-up-right-from-square"
+                        style="font-size: 10px; margin-left: 4px;"></i></div>
+            </div>
+
+            <div class="detail-card">
+                <div class="detail-card-top">
+                    <span class="detail-label">Registration Fee</span>
+                    <div class="detail-icon"><i class="fas fa-indian-rupee-sign"></i></div>
+                </div>
+                <div class="detail-value">₹300 / Head</div>
+                <div class="detail-sub">Includes Lunch &amp; Official E-Pass</div>
+            </div>
+
+            <div class="detail-card">
+                <div class="detail-card-top">
+                    <span class="detail-label">Prize Rewards</span>
+                    <div class="detail-icon"><i class="fas fa-award"></i></div>
+                </div>
+                <div class="detail-value">₹25,000 PRIZE POOL</div>
+                <div class="detail-sub">Cash / Certificates / Badges</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================
+         8 INNOVATION TRACKS
+         ========================================================== -->
+    <div class="container" id="tracks">
+        <div class="section-header">
+            <span class="section-badge">Competition Arenas</span>
+            <h2 class="section-title">8 Innovation Themes</h2>
+            <p class="section-desc">Choose your battleground. Submit cutting-edge architectures across 8 core
+                technological horizons.</p>
+        </div>
+
+        <div class="themes-grid">
+            <div class="theme-card" onmousemove="tiltCard(event, this)" onmouseleave="resetCardTilt(this)">
+                <div class="theme-header">
+                    <div class="theme-number">01</div>
+                    <i class="fas fa-brain theme-icon"></i>
+                </div>
+                <h3>Agentic AI &amp; Intelligence Applications</h3>
+                <p>Autonomous multi-agent workflows, goal-directed task solvers, tool-calling agents &amp; self-healing
+                    code loops.</p>
+                <ul>
+                    <li><i class="fas fa-chevron-right"></i> AI Agents, Multi Agent Systems</li>
+                    <li><i class="fas fa-chevron-right"></i> Autonomous AI Workflows</li>
+                </ul>
+            </div>
+
+            <div class="theme-card" onmousemove="tiltCard(event, this)" onmouseleave="resetCardTilt(this)">
+                <div class="theme-header">
+                    <div class="theme-number">02</div>
+                    <i class="fas fa-microchip theme-icon"></i>
+                </div>
+                <h3>Generative AI &amp; LLMs Applications</h3>
+                <p>Enterprise RAG architectures, local fine-tuned models, multimodal synthesis &amp; context-aware
+                    chatbots.</p>
+                <ul>
+                    <li><i class="fas fa-chevron-right"></i> RAG Systems, AI Chat Bots</li>
+                    <li><i class="fas fa-chevron-right"></i> Multimodal AI</li>
+                </ul>
+            </div>
+
+            <div class="theme-card" onmousemove="tiltCard(event, this)" onmouseleave="resetCardTilt(this)">
+                <div class="theme-header">
+                    <div class="theme-number">03</div>
+                    <i class="fas fa-code theme-icon"></i>
+                </div>
+                <h3>AI-Powered Software Engineering</h3>
+                <p>Intelligent DevOps, auto-refactoring engines, semantic vulnerability scanning &amp; automated
+                    synthetic test generation.</p>
+                <ul>
+                    <li><i class="fas fa-chevron-right"></i> AI Coding Assistants, Automated Testing</li>
+                    <li><i class="fas fa-chevron-right"></i> Code Review Automation</li>
+                </ul>
+            </div>
+
+            <div class="theme-card" onmousemove="tiltCard(event, this)" onmouseleave="resetCardTilt(this)">
+                <div class="theme-header">
+                    <div class="theme-number">04</div>
+                    <i class="fas fa-database theme-icon"></i>
+                </div>
+                <h3>Data Intelligence And Predictive Analytics</h3>
+                <p>Real-time telemetry analytics, predictive supply chains, financial risk modelling &amp; business
+                    anomaly detectors.</p>
+                <ul>
+                    <li><i class="fas fa-chevron-right"></i> Predictive Analytics</li>
+                    <li><i class="fas fa-chevron-right"></i> Recommendation Systems</li>
+                </ul>
+            </div>
+
+            <div class="theme-card" onmousemove="tiltCard(event, this)" onmouseleave="resetCardTilt(this)">
+                <div class="theme-header">
+                    <div class="theme-number">05</div>
+                    <i class="fas fa-city theme-icon"></i>
+                </div>
+                <h3>Smart Digital India</h3>
+                <p>Next-gen citizen services, smart traffic mitigation, automated grievance routing &amp; digital
+                    governance.</p>
+                <ul>
+                    <li><i class="fas fa-chevron-right"></i> Smart Cities Applications</li>
+                    <li><i class="fas fa-chevron-right"></i> Digital Governance</li>
+                    <li><i class="fas fa-chevron-right"></i> Citizen Services</li>
+                </ul>
+            </div>
+
+            <div class="theme-card" onmousemove="tiltCard(event, this)" onmouseleave="resetCardTilt(this)">
+                <div class="theme-header">
+                    <div class="theme-number">06</div>
+                    <i class="fas fa-graduation-cap theme-icon"></i>
+                </div>
+                <h3>EdTech &amp; Student Intelligence</h3>
+                <p>Adaptive Personalized Tutors, Interactive Code Copilots For Kids, Automated Grading &amp;
+                    Neuro-Divergent Learning Tools.</p>
+                <ul>
+                    <li><i class="fas fa-chevron-right"></i> AI Tutors, Personalized Learning</li>
+                    <li><i class="fas fa-chevron-right"></i> Automated Assessment</li>
+                </ul>
+            </div>
+
+            <div class="theme-card" onmousemove="tiltCard(event, this)" onmouseleave="resetCardTilt(this)">
+                <div class="theme-header">
+                    <div class="theme-number">07</div>
+                    <i class="fas fa-seedling theme-icon"></i>
+                </div>
+                <h3>Climate Tech &amp; Sustainability Software</h3>
+                <p>Carbon footprint ledgers, microgrid energy dispatch optimizers, crop disease vision diagnostics &amp;
+                    eco-sensors.</p>
+                <ul>
+                    <li><i class="fas fa-chevron-right"></i> Carbon Tracking, Energy Optimization</li>
+                    <li><i class="fas fa-chevron-right"></i> Sustainable Dashboard</li>
+                </ul>
+            </div>
+
+            <div class="theme-card" onmousemove="tiltCard(event, this)" onmouseleave="resetCardTilt(this)">
+                <div class="theme-header">
+                    <div class="theme-number">08</div>
+                    <i class="fas fa-lightbulb theme-icon"></i>
+                </div>
+                <h3>Open Innovation</h3>
+                <p>Unrestricted radical concepts. High-impact solutions addressing healthcare, robotics, aerospace, or
+                    cybersecurity.</p>
+                <ul>
+                    <li><i class="fas fa-chevron-right"></i> Any Innovative Software Solutions</li>
+                    <li><i class="fas fa-chevron-right"></i> Real-World Problem Solving</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================
+         WHO CAN PARTICIPATE / ELIGIBILITY
+         ========================================================== -->
+    <section class="eligibility-section" id="eligibility">
+        <div class="eligibility-wrapper">
+            <div class="eligibility-title">
+                <p class="eyebrow">SMART✘ 𝟖 HACKATHON</p>
+                <h2>Who can<br><span>participate?</span></h2>
+
+                <p class="description">
+                    Anyone with a practical, innovative idea is welcome to build with us.
+                </p>
+
+                <div class="team-limit">
+                    <span class="team-number">4</span>
+                    <div>
+                        <small>TEAM LIMIT</small>
+                        <strong>Maximum members per team</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="eligibility-rules">
+                <article class="rule">
+                    <span class="rule-number">01</span>
+                    <div>
+                        <h3>Open Participation</h3>
+                        <p>UG, PG, Research Scholars and Startups can participate.</p>
+                    </div>
+                </article>
+
+                <article class="rule">
+                    <span class="rule-number">02</span>
+                    <div>
+                        <h3>One Idea Per Team</h3>
+                        <p>Each registered team may submit one unique innovation idea.</p>
+                    </div>
+                </article>
+
+                <article class="rule">
+                    <span class="rule-number">03</span>
+                    <div>
+                        <h3>Build Together</h3>
+                        <p>Interdisciplinary teams are encouraged to bring diverse skills together.</p>
+                    </div>
+                </article>
+
+                <article class="rule">
+                    <span class="rule-number">04</span>
+                    <div>
+                        <h3>Startups Welcome</h3>
+                        <p>Startup teams with bold solutions are invited to join the challenge.</p>
+                    </div>
+                </article>
+
+                <article class="rule">
+                    <span class="rule-number">05</span>
+                    <div>
+                        <h3>Facility</h3>
+                        <p>Arrange their own availability of Laptops and Internet </p>
+                    </div>
+                </article>
+
+                <a onclick="scrollToSection('register')" class="eligibility-button">
+                    Register now <span>↗</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================
+         REGISTRATION & PAYMENT SECTION
+         ========================================================== -->
+    <div class="container" id="register">
+        <div class="section-header">
+            <span class="section-badge">Seamless Real-World Onboarding</span>
+            <h2 class="section-title">Participant Registration &amp; Payment</h2>
+            <p class="section-desc">Submit your credentials, clear the registration payment through our verified
+                gateway, and receive your confirmed admission pass.</p>
+        </div>
+
+        <div class="registration-wrapper">
+            <div class="steps-bar">
+                <div class="step-node active" id="stepNode1">
+                    <div class="step-circle">1</div>
+                    <div class="step-title">Team Info</div>
+                </div>
+                <div class="step-node" id="stepNode2">
+                    <div class="step-circle">2</div>
+                    <div class="step-title">Innovation Track</div>
+                </div>
+                <div class="step-node" id="stepNode3">
+                    <div class="step-circle">3</div>
+                    <div class="step-title">Real Payment</div>
+                </div>
+                <div class="step-node" id="stepNode4">
+                    <div class="step-circle">4</div>
+                    <div class="step-title">Confirmed E-Pass</div>
+                </div>
+            </div>
+
+            <form id="regForm" onsubmit="handleRegistrationSubmit(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="regFullname">Lead / Participant Full Name *</label>
+                        <input type="text" id="regFullname" class="form-control" placeholder="e.g. Karthik Raja S"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regEmail">Official Email Address *</label>
+                        <input type="email" id="regEmail" class="form-control" placeholder="karthik@college.edu"
+                            required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="regPhone">WhatsApp / Mobile Number *</label>
+                        <input type="tel" id="regPhone" class="form-control" placeholder="+91 98421 XXXXX" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regCollege">College / Institution Name *</label>
+                        <input type="text" id="regCollege" class="form-control"
+                            placeholder="e.g. NSN COLLEGE OF ENGINEERING AND TECHNOLOGY, KARUR" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="regYear">Academic Year of Study *</label>
+                        <select id="regYear" class="form-control" required>
+                            <option value="">Choose your year</option>
+                            <option value="1st Year">1st Year</option>
+                            <option value="2nd Year">2nd Year</option>
+                            <option value="3rd Year">3rd Year</option>
+                            <option value="4th Year">4th Year</option>
+                            <option value="Post Graduate">Post Graduate / MCA</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="regTeamSize">Team Composition *</label>
+                        <select id="regTeamSize" class="form-control" onchange="updateDynamicFee()" required>
+                            <option value="Individual" selected>Individual (1 Member) - ₹300</option>
+                            <option value="2 Members">2 Members - ₹600</option>
+                            <option value="3 Members">3 Members - ₹900</option>
+                            <option value="4 Members">4 Members - ₹1200</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Additional Members Optional Field -->
+                <div class="form-group" id="teamMembersGroup" style="display:none;">
+                    <label for="regTeamMembers">Team Member Names &amp; Details (For Multiple Members)</label>
+                    <input type="text" id="regTeamMembers" class="form-control"
+                        placeholder="e.g. 2. Priya M, 3. Sanjay R, 4. Divya K">
+                </div>
+
+                <!-- Track Selection -->
+                <div class="form-group">
+                    <label>Select Innovation Theme *</label>
+                    <div class="track-options-grid">
+                        <label class="track-radio-card selected" onclick="selectTrackRadio(this)">
+                            <input type="radio" name="hackathonTrack" value="Agentic AI" checked>
+                            <span>Agentic AI &amp; Intelligent Applications</span>
+                        </label>
+                        <label class="track-radio-card" onclick="selectTrackRadio(this)">
+                            <input type="radio" name="hackathonTrack" value="Generative AI">
+                            <span>Generative AI &amp; LLMs Applications</span>
+                        </label>
+                        <label class="track-radio-card" onclick="selectTrackRadio(this)">
+                            <input type="radio" name="hackathonTrack" value="AI Software">
+                            <span>AI-Powered Software Engineering</span>
+                        </label>
+                        <label class="track-radio-card" onclick="selectTrackRadio(this)">
+                            <input type="radio" name="hackathonTrack" value="Data Intelligence">
+                            <span>Data Intelligence &amp; Analytics</span>
+                        </label>
+                        <label class="track-radio-card" onclick="selectTrackRadio(this)">
+                            <input type="radio" name="hackathonTrack" value="Smart Digital">
+                            <span>Smart Digital India</span>
+                        </label>
+                        <label class="track-radio-card" onclick="selectTrackRadio(this)">
+                            <input type="radio" name="hackathonTrack" value="EdTech">
+                            <span>EdTech &amp; Student Intelligence</span>
+                        </label>
+                        <label class="track-radio-card" onclick="selectTrackRadio(this)">
+                            <input type="radio" name="hackathonTrack" value="Climate Tech">
+                            <span>Climate Tech &amp; Sustainability</span>
+                        </label>
+                        <label class="track-radio-card" onclick="selectTrackRadio(this)">
+                            <input type="radio" name="hackathonTrack" value="Open Innovation">
+                            <span>Open Innovation</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Dynamic Bill Card -->
+                <div class="bill-card">
+                    <div class="bill-header">
+                        <h4><i class="fas fa-file-invoice-dollar"></i> Live Fee Calculation</h4>
+                        <span style="font-size: 11px; color: var(--primary-green);"><i class="fas fa-lock"></i> Secured
+                            by Bank Switch</span>
+                    </div>
+                    <div class="bill-row">
+                        <span>Base Fee (₹300 per head):</span>
+                        <span id="billBaseCalc">1 participant x ₹300</span>
+                    </div>
+                    <div class="bill-row">
+                        <span>Hackathon Welcome Kit &amp; Auditorium Access:</span>
+                        <span style="color: var(--primary-green);">INCLUDED</span>
+                    </div>
+                    <div class="bill-row">
+                        <span>Payment Gateway Surcharge:</span>
+                        <span style="color: var(--primary-green);">₹0.00 (Sponsored by NSN CET)</span>
+                    </div>
+                    <div class="bill-total-row">
+                        <span class="bill-total-label">Total Payable Amount:</span>
+                        <span class="bill-total-val" id="billTotalAmount">₹300</span>
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 25px;">
+                    <label
+                        style="display: flex; align-items: center; gap: 10px; cursor: pointer; text-transform: none;">
+                        <input type="checkbox" id="regTerms" required
+                            style="accent-color: var(--primary-green); width: 18px; height: 18px;">
+                        <span>I certify that the information entered is accurate and agree to hackathon guidelines &amp;
+                            code of conduct.</span>
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-proceed" id="btnInitiatePayment">
+                    <i class="fas fa-shield-halved"></i> Proceed to Payment Gateway (<span
+                        id="btnPayAmount">₹300</span>)
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ==========================================================
+         MODAL 1: REAL PAYMENT GATEWAY MODAL
+         ========================================================== -->
+    <div class="gateway-modal" id="paymentGatewayModal">
+        <div class="gateway-card">
+            <div class="gateway-header">
+                <div class="gateway-brand">
+                    <div
+                        style="width: 36px; height: 36px; background: rgba(0, 255, 65, 0.15); border: 1.5px solid var(--primary-green); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--primary-green);">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="gateway-title">
+                        <h3>NSN CET HACKATHON GATEWAY</h3>
+                        <p><i class="fas fa-shield-check"></i> 256-Bit Encrypted &bull; NPCI / RBI Compliant</p>
+                    </div>
+                </div>
+                <button class="gateway-close" onclick="closePaymentModal()">&times;</button>
+            </div>
+
+            <div class="gateway-body">
+                <div
+                    style="display: flex; justify-content: space-between; align-items: center; background: rgba(10, 14, 39, 0.6); padding: 12px 18px; border-radius: 10px; margin-bottom: 20px; border: 1px solid rgba(255, 255, 255, 0.08);">
+                    <div>
+                        <div style="font-size: 11px; color: var(--text-secondary);">RECIPIENT</div>
+                        <div style="font-size: 13px; font-weight: 700; color: #fff;">NSN CET Karur - SMART X 8</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="font-size: 11px; color: var(--text-secondary);">AMOUNT DUE</div>
+                        <div style="font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 800; color: var(--primary-green);"
+                            id="modalDueAmount">₹300</div>
+                    </div>
+                </div>
+
+                <!-- Payment Channel Selectors -->
+                <div class="pay-channels">
+                    <div class="pay-channel-btn active" id="btnChannelUpi" onclick="switchPayChannel('upi')">
+                        <i class="fas fa-qrcode"></i>
+                        <span>UPI Dynamic QR</span>
+                    </div>
+                    <div class="pay-channel-btn" id="btnChannelCard" onclick="switchPayChannel('card')">
+                        <i class="fas fa-credit-card"></i>
+                        <span>Cards (3D OTP)</span>
+                    </div>
+                    <div class="pay-channel-btn" id="btnChannelBank" onclick="switchPayChannel('bank')">
+                        <i class="fas fa-building-columns"></i>
+                        <span>Net Banking</span>
+                    </div>
+                </div>
+
+                <!-- 1. UPI Payment Interface -->
+                <div id="channelUpiView" class="upi-box">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 12px;">
+                        <span style="color: var(--text-secondary);">Scan with any UPI App</span>
+                        <span style="color: var(--warning-orange); font-weight: 700;"><i class="fas fa-clock"></i>
+                            Expiring in <span id="qrTimer">07:58</span></span>
+                    </div>
+
+                    <div class="qr-wrapper">
+                        <div id="dynamicQrCode"></div>
+                    </div>
+
+                    <div class="upi-id-badge">
+                        <span>UPI VPA: <strong>arurajesh1980@okhdfcbank</strong></span>
+                        <button class="copy-btn" onclick="copyUpiId()" title="Copy UPI ID"><i
+                                class="fas fa-copy"></i></button>
+                    </div>
+
+                    <div class="upi-apps-row">
+                        <div class="app-pill"><i class="fab fa-google-pay" style="color:#00d4ff;"></i> GPay</div>
+                        <div class="app-pill"><i class="fas fa-mobile-screen" style="color:#8b5cf6;"></i> PhonePe</div>
+                        <div class="app-pill"><i class="fas fa-wallet" style="color:#00ff41;"></i> Paytm</div>
+                        <div class="app-pill"><i class="fas fa-building-columns"></i> BHIM UPI</div>
+                    </div>
+
+                    <!-- Bank UTR Verification Input -->
+                    <div class="utr-verify-group">
+                        <label>
+                            <span>12-Digit Bank UTR / UPI Reference ID *</span>
+                            <button type="button" class="demo-utr-btn" onclick="fillSampleUtr()">Test Auto-Fill
+                                UTR</button>
+                        </label>
+                        <input type="text" id="upiUtrInput" class="form-control" placeholder="e.g. 428919028374"
+                            maxlength="12">
+                        <p style="font-size: 11px; color: var(--text-secondary); margin-top: 6px;">
+                            After completing the payment in your UPI app, enter the 12-digit UTR/Ref number shown on the
+                            receipt.
+                        </p>
+                    </div>
+
+                    <button class="btn-proceed" style="margin-top: 18px;" onclick="verifyUpiPayment()">
+                        <i class="fas fa-circle-check"></i> Submit &amp; Verify Payment
+                    </button>
+                </div>
+
+                <!-- 2. Card Payment Interface -->
+                <div id="channelCardView" class="card-box">
+                    <div class="card-preview-graphic">
+                        <div class="card-chip"></div>
+                        <div class="card-num-disp" id="cardNumPreview">&bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull;
+                            &bull;&bull;&bull;&bull; 4242</div>
+                        <div class="card-meta-disp">
+                            <span id="cardHolderPreview">CARDHOLDER NAME</span>
+                            <span id="cardExpiryPreview">MM/YY</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Card Number</label>
+                        <input type="text" id="cardInputNumber" class="form-control" placeholder="4111 2222 3333 4444"
+                            maxlength="19" oninput="formatCardNumber(this)">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Expiry (MM/YY)</label>
+                            <input type="text" id="cardInputExpiry" class="form-control" placeholder="12/28"
+                                maxlength="5" oninput="formatCardExpiry(this)">
+                        </div>
+                        <div class="form-group">
+                            <label>CVV / CVC</label>
+                            <input type="password" id="cardInputCvv" class="form-control" placeholder="123"
+                                maxlength="4">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Cardholder Name</label>
+                        <input type="text" id="cardInputName" class="form-control" placeholder="Name on card"
+                            oninput="updateCardHolder(this)">
+                    </div>
+
+                    <button class="btn-proceed" onclick="triggerCardOtpFlow()">
+                        <i class="fas fa-lock"></i> Authorize with 3D Secure OTP
+                    </button>
+                </div>
+
+                <!-- 3. Net Banking Interface -->
+                <div id="channelBankView" class="bank-box">
+                    <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 14px;">Select your bank to
+                        proceed to secure banking gateway:</p>
+                    <div class="bank-grid">
+                        <div class="bank-btn selected" onclick="selectBank(this)"><i
+                                class="fas fa-building-columns"></i> State Bank of India</div>
+                        <div class="bank-btn" onclick="selectBank(this)"><i class="fas fa-building-columns"></i> HDFC
+                            Bank</div>
+                        <div class="bank-btn" onclick="selectBank(this)"><i class="fas fa-building-columns"></i> ICICI
+                            Bank</div>
+                        <div class="bank-btn" onclick="selectBank(this)"><i class="fas fa-building-columns"></i> Axis
+                            Bank</div>
+                        <div class="bank-btn" onclick="selectBank(this)"><i class="fas fa-building-columns"></i> Canara
+                            Bank</div>
+                        <div class="bank-btn" onclick="selectBank(this)"><i class="fas fa-building-columns"></i> Punjab
+                            National Bank</div>
+                    </div>
+                    <button class="btn-proceed" style="margin-top: 16px;" onclick="triggerNetbankingFlow()">
+                        <i class="fas fa-arrow-right-to-bracket"></i> Login &amp; Authorize Payment
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================
+         MODAL 2: 3D SECURE BANK OTP MODAL
+         ========================================================== -->
+    <div id="otpModal">
+        <div class="otp-card">
+            <div class="otp-shield">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <h3 style="font-family:'Space Grotesk', sans-serif; font-size: 18px; color: #fff;">BANK 3D-SECURE
+                VERIFICATION</h3>
+            <p style="font-size: 12px; color: var(--text-secondary); margin-top: 6px;">
+                One-Time Password (OTP) dispatched to registered mobile <strong>+91
+                    &bull;&bull;&bull;&bull;&bull;&bull;4219</strong>
+            </p>
+
+            <div style="margin: 14px 0 6px;">
+                <span class="otp-demo-helper" onclick="fillCardDemoOtp()">
+                    <i class="fas fa-key"></i> Demo OTP: <strong>784920</strong> (Click to Auto-fill)
+                </span>
+            </div>
+
+            <input type="text" id="otpInputField" class="otp-input-field" maxlength="6"
+                placeholder="&bull;&bull;&bull;&bull;&bull;&bull;">
+
+            <button class="btn-proceed" onclick="verifyCardOtp()">
+                <i class="fas fa-circle-check"></i> Authorize &amp; Clear Payment
+            </button>
+            <button
+                style="background:none; border:none; color:var(--text-secondary); font-size:12px; margin-top:14px; cursor:pointer;"
+                onclick="document.getElementById('otpModal').classList.remove('active')">
+                Cancel Transaction
+            </button>
+        </div>
+    </div>
+
+    <!-- ==========================================================
+         MODAL 3: LIVE PAYMENT VERIFICATION ENGINE
+         ========================================================== -->
+    <div id="verificationEngineModal">
+        <div class="verify-engine-card">
+            <div class="cyber-radar"></div>
+            <h3 style="font-family:'Space Grotesk', sans-serif; font-size: 20px; color: #fff;">VERIFYING PAYMENT</h3>
+            <p style="font-size: 12px; color: var(--primary-green);">Clearing with Banking Clearing House &amp; NPCI
+                Switch</p>
+
+            <div class="verify-step-list">
+                <div class="verify-step-item" id="vStep1">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <span>Contacting Banking Payment Gateway Switch...</span>
+                </div>
+                <div class="verify-step-item" id="vStep2">
+                    <i class="fas fa-clock"></i>
+                    <span>Validating Bank UTR / 3D-Secure Authorization Token...</span>
+                </div>
+                <div class="verify-step-item" id="vStep3">
+                    <i class="fas fa-clock"></i>
+                    <span>Reconciling Transaction with NSN CET Merchant Pool...</span>
+                </div>
+                <div class="verify-step-item" id="vStep4">
+                    <i class="fas fa-clock"></i>
+                    <span>Generating Cryptographically Signed E-Pass...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================
+         MODAL 4: CONFIRMED REGISTRATION & 3D E-PASS TICKET
+         ========================================================== -->
+    <div id="confirmedPassModal">
+        <div class="ticket-wrapper">
+            <div class="e-pass-card" id="ePassPrintableArea">
+                <div class="pass-header">
+                    <div>
+                        <div
+                            style="font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 800; color: #fff;">
+                            SMART X 8 &bull; OFFICIAL E-PASS
+                        </div>
+                        <div style="font-size: 12px; color: var(--primary-green); font-weight: 600;">
+                            N.S.N. COLLEGE OF ENGINEERING AND TECHNOLOGY &bull; KARUR
+                        </div>
+                    </div>
+                    <div class="pass-badge-verified">
+                        <i class="fas fa-circle-check"></i> PAYMENT VERIFIED
+                    </div>
+                </div>
+
+                <div class="pass-grid">
+                    <div>
+                        <div class="pass-field-label">Registration ID</div>
+                        <div class="pass-field-val" id="ticketRegId" style="color: var(--accent-blue);">SMARTX8-2026-REG
+                        </div>
+                    </div>
+                    <div>
+                        <div class="pass-field-label">Transaction ID / Bank UTR</div>
+                        <div class="pass-field-val" id="ticketTxnId"
+                            style="color: var(--primary-green); font-family: monospace;">TXN-0000</div>
+                    </div>
+                    <div>
+                        <div class="pass-field-label">Lead Participant</div>
+                        <div class="pass-field-val" id="ticketName">Participant Name</div>
+                    </div>
+                    <div>
+                        <div class="pass-field-label">College / Institution</div>
+                        <div class="pass-field-val" id="ticketCollege">NSN CET</div>
+                    </div>
+                    <div>
+                        <div class="pass-field-label">Innovation Track</div>
+                        <div class="pass-field-val" id="ticketTrack" style="color: var(--accent-purple);">Agentic AI
+                        </div>
+                    </div>
+                    <div>
+                        <div class="pass-field-label">Team Size</div>
+                        <div class="pass-field-val" id="ticketTeam">Individual</div>
+                    </div>
+                    <div>
+                        <div class="pass-field-label">Date &amp; Reporting Time</div>
+                        <div class="pass-field-val">Oct 10, 2026 &bull; 9:00 AM</div>
+                    </div>
+                    <div>
+                        <div class="pass-field-label">Venue</div>
+                        <div class="pass-field-val">Auditorium, NSN CET, Karur</div>
+                    </div>
+                </div>
+
+                <div class="pass-barcode-section">
+                    <svg class="barcode-svg" viewBox="0 0 100 20" preserveAspectRatio="none">
+                        <rect x="0" y="0" width="2" height="20" />
+                        <rect x="4" y="0" width="1" height="20" />
+                        <rect x="7" y="0" width="3" height="20" />
+                        <rect x="12" y="0" width="2" height="20" />
+                        <rect x="16" y="0" width="4" height="20" />
+                        <rect x="22" y="0" width="1" height="20" />
+                        <rect x="25" y="0" width="3" height="20" />
+                        <rect x="30" y="0" width="2" height="20" />
+                        <rect x="34" y="0" width="4" height="20" />
+                        <rect x="40" y="0" width="1" height="20" />
+                        <rect x="43" y="0" width="3" height="20" />
+                        <rect x="48" y="0" width="2" height="20" />
+                        <rect x="52" y="0" width="4" height="20" />
+                        <rect x="58" y="0" width="2" height="20" />
+                        <rect x="62" y="0" width="1" height="20" />
+                        <rect x="65" y="0" width="3" height="20" />
+                        <rect x="70" y="0" width="2" height="20" />
+                        <rect x="74" y="0" width="4" height="20" />
+                        <rect x="80" y="0" width="1" height="20" />
+                        <rect x="83" y="0" width="3" height="20" />
+                        <rect x="88" y="0" width="2" height="20" />
+                        <rect x="92" y="0" width="4" height="20" />
+                        <rect x="98" y="0" width="2" height="20" />
+                    </svg>
+                    <div style="text-align: right;">
+                        <div style="font-size: 10px; color: var(--text-secondary);">SECURITY ENTRY TOKEN</div>
+                        <div
+                            style="font-family: monospace; font-size: 13px; font-weight: 800; color: var(--primary-green);">
+                            ENCRYPTED PASS</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ticket-actions-bar">
+                <button class="btn-ticket-action btn-ticket-print" onclick="printOfficialPass()">
+                    <i class="fas fa-print"></i> Print / Save Official Pass (PDF)
+                </button>
+                <a href="admin-login.html" class="btn-ticket-action"
+                    style="background: rgba(0, 212, 255, 0.2); color: var(--accent-blue); border: 1px solid var(--accent-blue); text-decoration: none;">
+                    <i class="fas fa-shield-halved"></i> Verify in Admin Portal
+                </a>
+                <button class="btn-ticket-action btn-ticket-close" onclick="closeConfirmedModal()">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================
+         CAMPUS & HELPDESK CONTACT SECTION
+         ========================================================== -->
+    <div class="container" id="contact">
+        <div class="section-header">
+            <span class="section-badge">Get in Touch</span>
+            <h2 class="section-title">Campus &amp; Hackathon Helpdesk</h2>
+            <p class="section-desc">Reach out to our student coordinators and faculty convenors for assistance.</p>
+        </div>
+
+        <div
+            style="max-width: 900px; margin: 0 auto 60px; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
+            <div
+                style="background: var(--card-glass); border: 1.5px solid rgba(0, 255, 65, 0.2); padding: 25px; border-radius: 16px;">
+                <div style="font-size: 26px; color: var(--primary-green); margin-bottom: 12px;"><i
+                        class="fas fa-phone-volume"></i></div>
+                <h4 style="font-family:'Space Grotesk', sans-serif; font-size: 16px; margin-bottom: 8px;">Helpline
+                    Contacts</h4>
+                <p style="margin-bottom: 4px;"><a href="tel:+918489477577"
+                        style="color:var(--text-secondary); text-decoration:none; font-size:13px; display:inline-flex; align-items:center; gap:6px; transition:color 0.2s;"
+                        onmouseover="this.style.color='var(--primary-green)'"
+                        onmouseout="this.style.color='var(--text-secondary)'"><i class="fas fa-phone"
+                            style="font-size:11px;"></i> +91 9788448243</a></p>
+                <p><a href="tel:+918220447799"
+                        style="color:var(--text-secondary); text-decoration:none; font-size:13px; display:inline-flex; align-items:center; gap:6px; transition:color 0.2s;"
+                        onmouseover="this.style.color='var(--primary-green)'"
+                        onmouseout="this.style.color='var(--text-secondary)'"><i class="fas fa-phone"
+                            style="font-size:11px;"></i> +91 8072317542</a></p>
+            </div>
+
+            <div
+                style="background: var(--card-glass); border: 1.5px solid rgba(0, 212, 255, 0.2); padding: 25px; border-radius: 16px;">
+                <div style="font-size: 26px; color: var(--accent-blue); margin-bottom: 12px;"><i
+                        class="fas fa-envelope-open-text"></i></div>
+                <h4 style="font-family:'Space Grotesk', sans-serif; font-size: 16px; margin-bottom: 8px;">Official Email
+                </h4>
+                <p style="margin-bottom: 4px;"><a href="mailto:smartx8@nsncet.edu.in"
+                        style="color:var(--text-secondary); text-decoration:none; font-size:13px; display:inline-flex; align-items:center; gap:6px; transition:color 0.2s;"
+                        onmouseover="this.style.color='var(--accent-blue)'"
+                        onmouseout="this.style.color='var(--text-secondary)'"><i class="fas fa-envelope"
+                            style="font-size:11px;"></i>smartx8hackathon@gmail.com </a></p>
+                <p><a href="mailto:aids.nsncet@gmail.com"
+                        style="color:var(--text-secondary); text-decoration:none; font-size:13px; display:inline-flex; align-items:center; gap:6px; transition:color 0.2s;"
+                        onmouseover="this.style.color='var(--accent-blue)'"
+                        onmouseout="this.style.color='var(--text-secondary)'"><i class="fas fa-envelope"
+                            style="font-size:11px;"></i> nsncet.aids@gmail.com</a></p>
+            </div>
+
+            <a href="https://maps.google.com/?q=NSN+College+of+Engineering+and+Technology,+Karur" target="_blank"
+                rel="noopener noreferrer"
+                style="background: var(--card-glass); border: 1.5px solid rgba(139, 92, 246, 0.25); padding: 25px; border-radius: 16px; text-decoration: none; display: block; transition: all 0.3s ease; cursor: pointer;"
+                onmouseover="this.style.transform='translateY(-6px)'; this.style.borderColor='var(--accent-purple)'; this.style.boxShadow='0 15px 35px rgba(139, 92, 246, 0.25)';"
+                onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(139, 92, 246, 0.25)'; this.style.boxShadow='none';">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                    <div style="font-size: 26px; color: var(--accent-purple); margin-bottom: 12px;"><i
+                            class="fas fa-map-location-dot"></i></div>
+                    <span
+                        style="font-size: 11px; background: rgba(139, 92, 246, 0.15); color: var(--accent-purple); border: 1px solid rgba(139, 92, 246, 0.35); padding: 4px 10px; border-radius: 12px; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;">
+                        <i class="fas fa-arrow-up-right-from-square"></i> Open Map
+                    </span>
+                </div>
+                <h4 style="font-family:'Space Grotesk', sans-serif; font-size: 16px; margin-bottom: 6px; color: #fff;">
+                    College Campus</h4>
+                <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.5;">N.S.N. Kalvi Nagar,
+                    Karur-Madurai NH-7, Manalmedu, Karur - 639003, Tamil Nadu.</p>
+                <div
+                    style="margin-top: 10px; font-size: 12px; color: var(--accent-purple); font-weight: 600; display: flex; align-items: center; gap: 6px;">
+                    <i class="fas fa-location-arrow"></i> Click for Directions on Google Maps
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- ==========================================================
+         FOOTER
+         ========================================================== -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>
+                    <span class="footer-brand-badge"><i class="fas fa-bolt"></i></span>
+                    SMART✘ 𝟖
+                </h4>
+                <p>N.S.N.College of Engineering and Technology was established in the year 2011, NSNCET is committed to
+                    nurturing Discipline, Professionalism, Innovation and Technical excellence.</p>
+                <p>Department of Artificial Intelligence and Data Science was established in the Year 2023, the
+                    Department fosters AI &amp; Data Science Education, Research and Innovation, preparing students to
+                    create Intelligent, Data-Driven solutions for a better Society.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Quick Navigation</h4>
+                <a onclick="scrollToSection('tracks')">Innovation Themes</a>
+                <a onclick="scrollToSection('schedule')">Event Itinerary</a>
+                <a onclick="scrollToSection('eligibility')">Eligibility Rules</a>
+                <a onclick="scrollToSection('register')">Registration &amp; Payment</a>
+                <a onclick="scrollToSection('contact')">Helpline &amp; Support</a>
+                <a href="admin-login.html">Master Admin Console</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Security &amp; Policy</h4>
+                <a href="#">Payment Privacy Policy</a>
+                <a href="#">Terms of Participation</a>
+                <a href="#">Refund &amp; Cancellation Policy</a>
+
+            </div>
+
+            <!-- Single Vertical Social Media Links -->
+            <div class="footer-col social-links">
+                <h4>Social Media</h4>
+                <div class="footer-social-vertical">
+                    <!-- YouTube with Original Brand Logo -->
+                    <a href="https://www.youtube.com/channel/UCbkuIlhQ5n162E9MHwpt4QQ" target="_blank"
+                        rel="noopener noreferrer" class="social-vertical-link yt-link" aria-label="YouTube">
+                        <span class="social-icon-box yt-box" title="YouTube">
+                            <svg viewBox="0 0 28 20" width="16" height="11" fill="none">
+                                <path
+                                    d="M27.4 3.1c-.3-1.2-1.2-2.1-2.4-2.4C22.9.2 14 .2 14 .2s-8.9 0-11 .5c-1.2.3-2.1 1.2-2.4 2.4C.1 5.2.1 10 .1 10s0 4.8.5 6.9c.3 1.2 1.2 2.1 2.4 2.4 2.1.5 11 .5 11 .5s8.9 0 11-.5c1.2-.3 2.1-1.2 2.4-2.4.5-2.1.5-6.9.5-6.9s0-4.8-.5-6.9z"
+                                    fill="#FF0000" />
+                                <path d="M11.2 14.2l7.3-4.2-7.3-4.2v8.4z" fill="#FFFFFF" />
+                            </svg>
+                        </span>
+                        <span class="social-name">YouTube</span>
+                    </a>
+
+                    <!-- Instagram Original App -->
+                    <a href="https://www.instagram.com/_smartx8_?stkn=MXBqZzd0ajZhNXc2bg==" target="_blank"
+                        rel="noopener noreferrer" class="social-vertical-link ig-link" aria-label="Instagram">
+                        <span class="social-icon-box ig-box" title="Instagram">
+                            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#FFFFFF"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                                <circle cx="17.5" cy="6.5" r="1.5" fill="#FFFFFF" stroke="none" />
+                            </svg>
+                        </span>
+                        <span class="social-name">Instagram</span>
+                    </a>
+
+                    <!-- Facebook Original App -->
+                    <a href="https://www.facebook.com/profile.php?fb_profile_edit_entry_point=%7B%22click_point%22%3A%22edit_profile_button%22%2C%22feature%22%3A%22profile_header%22%7D&id=61594506577288&sk=about"
+                        target="_blank" rel="noopener noreferrer" class="social-vertical-link fb-link"
+                        aria-label="Facebook">
+                        <span class="social-icon-box fb-box" title="Facebook">
+                            <svg viewBox="0 0 24 24" width="12" height="12" fill="#FFFFFF">
+                                <path
+                                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                            </svg>
+                        </span>
+                        <span class="social-name">Facebook</span>
+                    </a>
+
+                    <!-- LinkedIn Original App -->
+                    <a href="https://www.linkedin.com/in/smartx-8-801a53438/?isSelfProfile=true" target="_blank"
+                        rel="noopener noreferrer" class="social-vertical-link in-link" aria-label="LinkedIn">
+                        <span class="social-icon-box in-box" title="LinkedIn">
+                            <svg viewBox="0 0 24 24" width="12" height="12" fill="#FFFFFF">
+                                <path
+                                    d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.25c-.9 0-1.63.73-1.63 1.63 0 .9.73 1.63 1.63 1.63.9 0 1.63-.73 1.63-1.63 0-.9-.73-1.63-1.63-1.63z" />
+                            </svg>
+                        </span>
+                        <span class="social-name">LinkedIn</span>
+                    </a>
+
+                    <!-- X (Twitter) Original App -->
+                    <a href="https://x.com/smartx82k26" target="_blank" rel="noopener noreferrer"
+                        class="social-vertical-link x-link" aria-label="X Twitter">
+                        <span class="social-icon-box x-box" title="X Twitter">
+                            <svg viewBox="0 0 24 24" width="11" height="11" fill="#FFFFFF">
+                                <path
+                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                            </svg>
+                        </span>
+                        <span class="social-name">X Twitter</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 N.S.N. College of Engineering and Technology. All Rights Reserved. </p>
+        </div>
+    </footer>
+
+    <!-- ==========================================================
+         SCRIPTS: THREE.JS, SOUND, DYNAMIC FEE, PAYMENT & E-PASS
+         ========================================================== -->
+    <script src="backend.js"></script>
+    <script>
+        // 1. THREE.JS 3D INTERACTIVE BACKGROUND SCENE
+        let scene, camera, renderer, cyberPolyhedron, particleConstellation;
+        let mouseX = 0, mouseY = 0;
+        let targetX = 0, targetY = 0;
+
+        function initThreeScene() {
+            const canvas = document.getElementById('webglCanvas');
+            scene = new THREE.Scene();
+
+            camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 40;
+
+            renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+            // Outer Polyhedron Wireframe
+            const polyGeo = new THREE.IcosahedronGeometry(15, 1);
+            const polyMat = new THREE.MeshBasicMaterial({
+                color: 0x00ff41,
+                wireframe: true,
+                transparent: true,
+                opacity: 0.22
+            });
+            cyberPolyhedron = new THREE.Mesh(polyGeo, polyMat);
+            scene.add(cyberPolyhedron);
+
+            // Inner Glowing Core
+            const coreGeo = new THREE.TorusKnotGeometry(7, 1.8, 80, 16);
+            const coreMat = new THREE.MeshBasicMaterial({
+                color: 0x00d4ff,
+                wireframe: true,
+                transparent: true,
+                opacity: 0.16
+            });
+            const innerCore = new THREE.Mesh(coreGeo, coreMat);
+            cyberPolyhedron.add(innerCore);
+
+            // Particle Constellation
+            const particleCount = 200;
+            const posArray = new Float32Array(particleCount * 3);
+
+            for (let i = 0; i < particleCount * 3; i += 3) {
+                posArray[i] = (Math.random() - 0.5) * 120;
+                posArray[i + 1] = (Math.random() - 0.5) * 120;
+                posArray[i + 2] = (Math.random() - 0.5) * 80;
+            }
+
+            const particleGeo = new THREE.BufferGeometry();
+            particleGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+
+            const particleMat = new THREE.PointsMaterial({
+                size: 1.5,
+                color: 0x00ff41,
+                transparent: true,
+                opacity: 0.6
+            });
+
+            particleConstellation = new THREE.Points(particleGeo, particleMat);
+            scene.add(particleConstellation);
+
+            window.addEventListener('mousemove', onMouseMove);
+            window.addEventListener('resize', onWindowResize);
+            animateThree();
+        }
+
+        function onMouseMove(event) {
+            mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+            mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+        }
+
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        function animateThree() {
+            requestAnimationFrame(animateThree);
+
+            targetX += (mouseX * 0.5 - targetX) * 0.05;
+            targetY += (mouseY * 0.5 - targetY) * 0.05;
+
+            if (cyberPolyhedron) {
+                cyberPolyhedron.rotation.x += 0.003;
+                cyberPolyhedron.rotation.y += 0.005;
+                cyberPolyhedron.rotation.z = targetX * 0.6;
+                cyberPolyhedron.position.x = targetX * 8;
+                cyberPolyhedron.position.y = targetY * 6;
+            }
+
+            if (particleConstellation) {
+                particleConstellation.rotation.y -= 0.001;
+                particleConstellation.rotation.x -= 0.0005;
+            }
+
+            renderer.render(scene, camera);
+        }
+
+        // 2. 3D CARD TILT EFFECT & AUDIO CHIME
+        function tiltCard(e, card) {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            const rotateX = ((y - centerY) / centerY) * -12;
+            const rotateY = ((x - centerX) / centerX) * 12;
+
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+        }
+
+        function resetCardTilt(card) {
+            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
+        }
+
+        let audioCtx;
+        function getAudioContext() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            return audioCtx;
+        }
+
+        function playSoundChime() {
+            try {
+                const ctx = getAudioContext();
+                const now = ctx.currentTime;
+                [523.25, 659.25, 783.99, 1046.50].forEach((freq, i) => {
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(freq, now + i * 0.1);
+
+                    gain.gain.setValueAtTime(0.2, now + i * 0.1);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.1 + 0.6);
+
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    osc.start(now + i * 0.1);
+                    osc.stop(now + i * 0.1 + 0.6);
+                });
+            } catch (err) {
+                console.log('Audio chime unavailable', err);
+            }
+        }
+
+        // 3. REGISTRATION FORM & DYNAMIC FEE ENGINE
+        let currentTotalFee = 300;
+        let pendingRegistrationData = null;
+        let activePaymentChannel = 'upi';
+        let qrTimerInterval = null;
+
+        function updateDynamicFee() {
+            const teamVal = document.getElementById('regTeamSize').value;
+            let count = 1;
+            if (teamVal.includes('2')) count = 2;
+            else if (teamVal.includes('3')) count = 3;
+            else if (teamVal.includes('4')) count = 4;
+
+            // Toggle team member names field
+            const membersGroup = document.getElementById('teamMembersGroup');
+            if (membersGroup) {
+                membersGroup.style.display = count > 1 ? 'block' : 'none';
+            }
+
+            currentTotalFee = count * 300;
+            document.getElementById('billBaseCalc').textContent = `${count} participant${count > 1 ? 's' : ''} x ₹300`;
+            document.getElementById('billTotalAmount').textContent = '₹' + currentTotalFee;
+            document.getElementById('btnPayAmount').textContent = '₹' + currentTotalFee;
+            document.getElementById('modalDueAmount').textContent = '₹' + currentTotalFee;
+        }
+
+        function selectTrackRadio(card) {
+            document.querySelectorAll('.track-radio-card').forEach(c => c.classList.remove('selected'));
+            card.classList.add('selected');
+            const radio = card.querySelector('input[type="radio"]');
+            if (radio) radio.checked = true;
+        }
+
+        function handleRegistrationSubmit(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('regFullname').value.trim();
+            const email = document.getElementById('regEmail').value.trim();
+            const phone = document.getElementById('regPhone').value.trim();
+            const college = document.getElementById('regCollege').value.trim();
+            const year = document.getElementById('regYear').value;
+            const team = document.getElementById('regTeamSize').value;
+            const trackRadio = document.querySelector('input[name="hackathonTrack"]:checked');
+            const track = trackRadio ? trackRadio.value : 'Agentic AI';
+            const teamMembersInput = document.getElementById('regTeamMembers');
+            const teamMembers = teamMembersInput ? teamMembersInput.value.trim() : '';
+
+            if (!name || !email || !phone || !college || !year) {
+                alert('Please fill out all required participant details.');
+                return;
+            }
+
+            // Check if participant already registered in backend
+            let existingRecord = null;
+            if (window.SmartXBackend) {
+                existingRecord = SmartXBackend.findExisting({
+                    email: email,
+                    phone: phone,
+                    fullname: name,
+                    college: college
+                });
+            }
+
+            // If already confirmed, display the official E-pass directly without duplicate registration
+            if (existingRecord && (existingRecord.status === 'Confirmed' || existingRecord.status === 'Verified')) {
+                alert(`You are already registered and confirmed!\nRegistration ID: ${existingRecord.registrationId}\nLoading your confirmed Hackathon E-Pass.`);
+                pendingRegistrationData = existingRecord;
+                completeRegistrationConfirmation();
+                return;
+            }
+
+            // Reuse pending registration ID if participant is resuming/updating
+            const regId = (existingRecord && existingRecord.registrationId) ?
+                existingRecord.registrationId :
+                ('SMARTX8-2026-REG-' + Math.floor(10000 + Math.random() * 90000));
+
+            pendingRegistrationData = {
+                registrationId: regId,
+                fullname: name,
+                email: email,
+                phone: phone,
+                college: college,
+                year: year,
+                track: track,
+                teamsize: team,
+                teamMembers: teamMembers,
+                amount: currentTotalFee,
+                paymentMethod: 'upi',
+                status: 'Pending Verification',
+                timestamp: (existingRecord && existingRecord.timestamp) ? existingRecord.timestamp : new Date().toLocaleString()
+            };
+
+            saveRegistrationRecord(pendingRegistrationData);
+
+            // Update UI step
+            document.getElementById('stepNode1').classList.remove('active');
+            document.getElementById('stepNode2').classList.add('active');
+            document.getElementById('stepNode3').classList.add('active');
+
+            openPaymentModal();
+        }
+
+        // 4. PAYMENT GATEWAY MODAL INTERACTIONS
+        function openPaymentModal() {
+            document.getElementById('modalDueAmount').textContent = '₹' + currentTotalFee;
+            generateDynamicUpiQr();
+            startQrTimer();
+            document.getElementById('paymentGatewayModal').classList.add('active');
+        }
+
+        function closePaymentModal() {
+            document.getElementById('paymentGatewayModal').classList.remove('active');
+            if (qrTimerInterval) clearInterval(qrTimerInterval);
+        }
+
+        function switchPayChannel(channel) {
+            activePaymentChannel = channel;
+            document.querySelectorAll('.pay-channel-btn').forEach(b => b.classList.remove('active'));
+
+            document.getElementById('channelUpiView').style.display = 'none';
+            document.getElementById('channelCardView').style.display = 'none';
+            document.getElementById('channelBankView').style.display = 'none';
+
+            if (channel === 'upi') {
+                document.getElementById('btnChannelUpi').classList.add('active');
+                document.getElementById('channelUpiView').style.display = 'block';
+            } else if (channel === 'card') {
+                document.getElementById('btnChannelCard').classList.add('active');
+                document.getElementById('channelCardView').style.display = 'block';
+            } else if (channel === 'bank') {
+                document.getElementById('btnChannelBank').classList.add('active');
+                document.getElementById('channelBankView').style.display = 'block';
+            }
+        }
+
+        function generateDynamicUpiQr() {
+            const qrContainer = document.getElementById('dynamicQrCode');
+            qrContainer.innerHTML = '';
+
+            const regId = pendingRegistrationData ? pendingRegistrationData.registrationId : 'SMARTX8-REG';
+            const upiString = `upi://pay?pa=arurajesh1980@okhdfcbank&pn=Rajesh%20Kumar&am=${currentTotalFee}&cu=INR&tn=${encodeURIComponent(regId)}`;
+
+            new QRCode(qrContainer, {
+                text: upiString,
+                width: 176,
+                height: 176,
+                colorDark: "#050716",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+        }
+
+        function startQrTimer() {
+            if (qrTimerInterval) clearInterval(qrTimerInterval);
+            let totalSeconds = 480;
+            const timerEl = document.getElementById('qrTimer');
+
+            qrTimerInterval = setInterval(() => {
+                totalSeconds--;
+                if (totalSeconds <= 0) {
+                    clearInterval(qrTimerInterval);
+                    timerEl.textContent = 'EXPIRED';
+                    return;
+                }
+                const m = String(Math.floor(totalSeconds / 60)).padStart(2, '0');
+                const s = String(totalSeconds % 60).padStart(2, '0');
+                timerEl.textContent = `${m}:${s}`;
+            }, 1000);
+        }
+
+        function copyUpiId() {
+            navigator.clipboard.writeText('arurajesh1980@okhdfcbank').then(() => {
+                alert('Official UPI ID (arurajesh1980@okhdfcbank) copied to clipboard!');
+            });
+        }
+
+        function fillSampleUtr() {
+            const randomUtr = String(Math.floor(400000000000 + Math.random() * 599999999999));
+            document.getElementById('upiUtrInput').value = randomUtr;
+        }
+
+        function verifyUpiPayment() {
+            const utr = document.getElementById('upiUtrInput').value.trim();
+            if (!utr || utr.length < 10) {
+                alert('Please enter a valid 12-digit Bank UTR / UPI Reference Number from your payment app.');
+                return;
+            }
+
+            if (pendingRegistrationData) {
+                pendingRegistrationData.utrNumber = utr;
+                pendingRegistrationData.paymentMethod = 'upi';
+                pendingRegistrationData.transactionId = 'TXN-UPI-' + Date.now().toString().slice(-8);
+            }
+
+            closePaymentModal();
+            triggerVerificationEngine();
+        }
+
+        // Card Formatting & 3D Secure
+        function formatCardNumber(input) {
+            let val = input.value.replace(/\D/g, '').substring(0, 16);
+            let formatted = val.match(/.{1,4}/g)?.join(' ') || val;
+            input.value = formatted;
+            document.getElementById('cardNumPreview').textContent = formatted || '•••• •••• •••• 4242';
+        }
+
+        function formatCardExpiry(input) {
+            let val = input.value.replace(/\D/g, '').substring(0, 4);
+            if (val.length >= 3) {
+                val = val.substring(0, 2) + '/' + val.substring(2, 4);
+            }
+            input.value = val;
+            document.getElementById('cardExpiryPreview').textContent = val || 'MM/YY';
+        }
+
+        function updateCardHolder(input) {
+            document.getElementById('cardHolderPreview').textContent = (input.value || 'CARDHOLDER NAME').toUpperCase();
+        }
+
+        function triggerCardOtpFlow() {
+            const num = document.getElementById('cardInputNumber').value.replace(/\s/g, '');
+            const exp = document.getElementById('cardInputExpiry').value;
+            const cvv = document.getElementById('cardInputCvv').value;
+
+            if (num.length < 16 || exp.length < 5 || cvv.length < 3) {
+                alert('Please fill in complete card details (16 digits, MM/YY, CVV).');
+                return;
+            }
+
+            document.getElementById('otpInputField').value = '';
+            document.getElementById('otpModal').classList.add('active');
+        }
+
+        function fillCardDemoOtp() {
+            document.getElementById('otpInputField').value = '784920';
+        }
+
+        function verifyCardOtp() {
+            const otp = document.getElementById('otpInputField').value.trim();
+            if (otp !== '784920' && otp.length !== 6) {
+                alert('Invalid OTP. Use demo OTP (784920) or enter a valid 6-digit authorization code.');
+                return;
+            }
+
+            document.getElementById('otpModal').classList.remove('active');
+            closePaymentModal();
+
+            if (pendingRegistrationData) {
+                pendingRegistrationData.utrNumber = 'AUTH-' + Math.floor(100000000000 + Math.random() * 900000000000);
+                pendingRegistrationData.paymentMethod = 'card';
+                pendingRegistrationData.transactionId = 'TXN-CARD-' + Date.now().toString().slice(-8);
+            }
+
+            triggerVerificationEngine();
+        }
+
+        function selectBank(btn) {
+            document.querySelectorAll('.bank-btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+        }
+
+        function triggerNetbankingFlow() {
+            closePaymentModal();
+            if (pendingRegistrationData) {
+                pendingRegistrationData.utrNumber = 'NB-' + Math.floor(100000000000 + Math.random() * 900000000000);
+                pendingRegistrationData.paymentMethod = 'netbanking';
+                pendingRegistrationData.transactionId = 'TXN-NB-' + Date.now().toString().slice(-8);
+            }
+            triggerVerificationEngine();
+        }
+
+        // 5. LIVE VERIFICATION ENGINE ANIMATION
+        function triggerVerificationEngine() {
+            const modal = document.getElementById('verificationEngineModal');
+            modal.classList.add('active');
+
+            const s1 = document.getElementById('vStep1');
+            const s2 = document.getElementById('vStep2');
+            const s3 = document.getElementById('vStep3');
+            const s4 = document.getElementById('vStep4');
+
+            s1.className = 'verify-step-item active';
+            s2.className = 'verify-step-item';
+            s3.className = 'verify-step-item';
+            s4.className = 'verify-step-item';
+
+            setTimeout(() => {
+                s1.className = 'verify-step-item completed';
+                s1.innerHTML = '<i class="fas fa-check-circle" style="color:var(--primary-green);"></i> <span>Connected to Banking Payment Switch</span>';
+                s2.className = 'verify-step-item active';
+                s2.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>Validating Bank UTR / 3D-Secure Authorization Token...</span>';
+            }, 1000);
+
+            setTimeout(() => {
+                s2.className = 'verify-step-item completed';
+                s2.innerHTML = '<i class="fas fa-check-circle" style="color:var(--primary-green);"></i> <span>Bank Reference Authenticated &amp; Approved</span>';
+                s3.className = 'verify-step-item active';
+                s3.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>Reconciling Transaction with NSN CET Merchant Pool...</span>';
+            }, 2100);
+
+            setTimeout(() => {
+                s3.className = 'verify-step-item completed';
+                s3.innerHTML = '<i class="fas fa-check-circle" style="color:var(--primary-green);"></i> <span>Settlement Reconciled (₹' + pendingRegistrationData.amount + ' CLEARED)</span>';
+                s4.className = 'verify-step-item active';
+                s4.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>Issuing Cryptographic Hackathon E-Pass...</span>';
+            }, 3200);
+
+            setTimeout(() => {
+                s4.className = 'verify-step-item completed';
+                s4.innerHTML = '<i class="fas fa-check-circle" style="color:var(--primary-green);"></i> <span>Registration Confirmed &amp; Pass Issued!</span>';
+                completeRegistrationConfirmation();
+            }, 4200);
+        }
+
+        // 6. CONFIRMED REGISTRATION & E-PASS ISSUANCE
+        function completeRegistrationConfirmation() {
+            document.getElementById('verificationEngineModal').classList.remove('active');
+
+            if (!pendingRegistrationData) return;
+
+            pendingRegistrationData.status = 'Confirmed';
+            pendingRegistrationData.confirmedAt = new Date().toLocaleString();
+
+            saveRegistrationRecord(pendingRegistrationData);
+
+            // Update E-Pass details
+            document.getElementById('ticketRegId').textContent = pendingRegistrationData.registrationId;
+            document.getElementById('ticketTxnId').textContent = `${pendingRegistrationData.transactionId} (UTR: ${pendingRegistrationData.utrNumber})`;
+            document.getElementById('ticketName').textContent = pendingRegistrationData.fullname;
+            document.getElementById('ticketCollege').textContent = pendingRegistrationData.college;
+            document.getElementById('ticketTrack').textContent = pendingRegistrationData.track;
+            document.getElementById('ticketTeam').textContent = `${pendingRegistrationData.teamsize} (₹${pendingRegistrationData.amount} Paid)`;
+
+            // Update steps
+            document.getElementById('stepNode3').classList.remove('active');
+            document.getElementById('stepNode4').classList.add('active');
+
+            // Open Confirmed E-Pass Modal
+            document.getElementById('confirmedPassModal').classList.add('active');
+
+            playSoundChime();
+            launchConfettiBurst();
+
+            // Reset form
+            document.getElementById('regForm').reset();
+            updateDynamicFee();
+        }
+
+        function saveRegistrationRecord(record) {
+            if (window.SmartXBackend) {
+                SmartXBackend.saveOrUpdate(record);
+                return;
+            }
+
+            let all = [];
+            try {
+                const existing = localStorage.getItem('hackathonRegistrations');
+                all = existing ? JSON.parse(existing) : [];
+            } catch (e) {
+                all = [];
+            }
+
+            const existingIndex = all.findIndex(item => item.registrationId === record.registrationId || (item.email && item.email.toLowerCase() === record.email.toLowerCase()));
+            if (existingIndex >= 0) {
+                all[existingIndex] = { ...all[existingIndex], ...record };
+            } else {
+                all.unshift(record);
+            }
+            localStorage.setItem('hackathonRegistrations', JSON.stringify(all));
+        }
+
+        function launchConfettiBurst() {
+            if (typeof confetti === 'function') {
+                confetti({
+                    particleCount: 120,
+                    spread: 80,
+                    origin: { y: 0.6 },
+                    colors: ['#00ff41', '#00d4ff', '#8b5cf6', '#ffffff']
+                });
+            }
+        }
+
+        function closeConfirmedModal() {
+            document.getElementById('confirmedPassModal').classList.remove('active');
+        }
+
+        let currentPosterZoom = 1;
+        function openPosterModal() {
+            const modal = document.getElementById('posterModal');
+            if (modal) {
+                modal.classList.add('active');
+                modal.style.display = 'flex';
+                resetPosterZoom();
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closePosterModal() {
+            const modal = document.getElementById('posterModal');
+            if (modal) {
+                modal.classList.remove('active');
+                modal.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        }
+
+        function zoomPoster(delta) {
+            const img = document.getElementById('fullPosterImg');
+            if (!img) return;
+            currentPosterZoom = Math.min(Math.max(0.6, Math.round((currentPosterZoom + delta) * 10) / 10), 3.0);
+            applyPosterZoom();
+        }
+
+        function resetPosterZoom() {
+            currentPosterZoom = 1;
+            applyPosterZoom();
+            const body = document.getElementById('posterModalBody');
+            if (body) {
+                body.scrollLeft = 0;
+                body.scrollTop = 0;
+            }
+        }
+
+        function togglePosterZoom() {
+            if (currentPosterZoom > 1.05) {
+                resetPosterZoom();
+            } else {
+                currentPosterZoom = 1.75;
+                applyPosterZoom();
+            }
+        }
+
+        function applyPosterZoom() {
+            const img = document.getElementById('fullPosterImg');
+            const badge = document.getElementById('posterZoomLevel');
+            if (img) {
+                img.style.transform = `scale(${currentPosterZoom})`;
+                img.style.cursor = currentPosterZoom > 1 ? 'grab' : 'zoom-in';
+            }
+            if (badge) {
+                badge.textContent = `${Math.round(currentPosterZoom * 100)}%`;
+            }
+        }
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closePosterModal();
+            }
+        });
+
+        // Drag to pan zoomed poster
+        (function() {
+            let isDragging = false;
+            let startX, startY, scrollLeft, scrollTop;
+            document.addEventListener('DOMContentLoaded', () => {
+                const body = document.getElementById('posterModalBody');
+                if (!body) return;
+                body.addEventListener('mousedown', (e) => {
+                    if (currentPosterZoom <= 1) return;
+                    isDragging = true;
+                    body.style.cursor = 'grabbing';
+                    startX = e.pageX - body.offsetLeft;
+                    startY = e.pageY - body.offsetTop;
+                    scrollLeft = body.scrollLeft;
+                    scrollTop = body.scrollTop;
+                });
+                window.addEventListener('mouseup', () => {
+                    if (!isDragging) return;
+                    isDragging = false;
+                    const body = document.getElementById('posterModalBody');
+                    if (body) body.style.cursor = '';
+                });
+                body.addEventListener('mousemove', (e) => {
+                    if (!isDragging) return;
+                    e.preventDefault();
+                    const x = e.pageX - body.offsetLeft;
+                    const y = e.pageY - body.offsetTop;
+                    const walkX = (x - startX) * 1.5;
+                    const walkY = (y - startY) * 1.5;
+                    body.scrollLeft = scrollLeft - walkX;
+                    body.scrollTop = scrollTop - walkY;
+                });
+            });
+        })();
+
+        function printOfficialPass() {
+            window.print();
+        }
+
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Initialize Three Scene on DOM Load
+        document.addEventListener('DOMContentLoaded', () => {
+            initThreeScene();
+            updateDynamicFee();
+        });
+    </script>
+
+    <!-- Fullscreen Interactive Poster Modal -->
+    <div id="posterModal" class="poster-modal-backdrop" onclick="closePosterModal()">
+        <div class="poster-modal-dialog" onclick="event.stopPropagation()">
+            <div class="poster-modal-header">
+                <div class="poster-modal-title">
+                    <i class="fas fa-image" style="color:var(--primary-green);"></i>
+                    <span>SMART✘ 𝟖 National Hackathon 2026 &mdash; Official Event Poster</span>
+                </div>
+                <div class="poster-modal-controls">
+                    <button type="button" class="modal-ctrl-btn" onclick="zoomPoster(-0.25)" title="Zoom Out">
+                        <i class="fas fa-search-minus"></i>
+                    </button>
+                    <span id="posterZoomLevel" class="modal-zoom-badge">100%</span>
+                    <button type="button" class="modal-ctrl-btn" onclick="zoomPoster(0.25)" title="Zoom In">
+                        <i class="fas fa-search-plus"></i>
+                    </button>
+                    <button type="button" class="modal-ctrl-btn" onclick="resetPosterZoom()" title="Reset Zoom to Fit">
+                        <i class="fas fa-compress-arrows-alt"></i> <span class="ctrl-label">Fit</span>
+                    </button>
+                    <a href="images/END.jpeg" target="_blank" class="modal-ctrl-btn" title="Open Poster in New Tab">
+                        <i class="fas fa-external-link-alt"></i> <span class="ctrl-label">New Tab</span>
+                    </a>
+                    <a href="images/END.jpeg" download="SMARTX8_Hackathon_Official_Poster.jpeg" class="modal-ctrl-btn" title="Download High-Res Poster">
+                        <i class="fas fa-download"></i> <span class="ctrl-label">Download</span>
+                    </a>
+                    <button type="button" class="modal-close-btn" onclick="closePosterModal()" title="Close Fullscreen (Esc)">
+                        <i class="fas fa-times"></i> <span>Close</span>
+                    </button>
+                </div>
+            </div>
+            <div class="poster-modal-body" id="posterModalBody">
+                <img id="fullPosterImg" src="images/END.jpeg" alt="SMART X 8 Hackathon Official Event Poster Fullscreen"
+                    class="poster-modal-img" ondblclick="togglePosterZoom()" title="Double click to toggle zoom" loading="eager">
+            </div>
+            <div class="poster-modal-footer">
+                <span><i class="fas fa-info-circle" style="color:var(--primary-green);"></i> Double-click or use buttons to Zoom &bull; Scroll to pan when zoomed &bull; Press <kbd>ESC</kbd> to exit</span>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

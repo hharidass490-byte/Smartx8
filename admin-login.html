@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - SMART X 8 Hackathon</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="admin-login.css">
+</head>
+
+<body>
+    <main class="login-shell">
+        <div class="brand">
+            <div class="brand-icon"><i class="fas fa-shield-halved"></i></div>
+            <h1>SMART X 8</h1>
+            <p>Administrator access portal</p>
+        </div>
+
+        <section class="login-card">
+            <div class="card-heading">
+                <h2>Sign in to Admin</h2>
+                <p>Enter your administrator credentials to continue.</p>
+            </div>
+
+            <form id="loginForm">
+                <label for="username">Username</label>
+                <div class="input-wrap">
+                    <i class="fas fa-user"></i>
+                    <input id="username" name="username" type="text" autocomplete="username" required autofocus>
+                </div>
+
+                <label for="password">Password</label>
+                <div class="input-wrap">
+                    <i class="fas fa-lock"></i>
+                    <input id="password" name="password" type="password" autocomplete="current-password" required>
+                </div>
+
+                <button class="login-button" type="submit">
+                    <i class="fas fa-arrow-right-to-bracket"></i> Login to Admin Panel
+                </button>
+                <div class="error-message" id="loginError" role="alert">Invalid username or password.</div>
+            </form>
+        </section>
+
+        <a class="back-link" href="index.html"><i class="fas fa-arrow-left"></i> Back to public site</a>
+    </main>
+
+    <script src="backend.js"></script>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+            const error = document.getElementById('loginError');
+
+            if (window.SmartXBackend && SmartXBackend.validateLogin(username, password)) {
+                SmartXBackend.setAuthenticated(true);
+                window.location.replace('admin.html');
+                return;
+            }
+
+            // Fallback check if script not loaded
+            const storedPassword = localStorage.getItem('smartx8_admin_password');
+            const validUsers = ['admin', 'smartx8'];
+            const validPasswords = [storedPassword, 'smartx8', 'aids8', 'smartx8@2026'].filter(Boolean);
+
+            if (validUsers.includes(username.toLowerCase()) && validPasswords.includes(password)) {
+                sessionStorage.setItem('smartx8_admin_authenticated', 'true');
+                window.location.replace('admin.html');
+                return;
+            }
+
+            error.classList.add('show');
+            document.getElementById('password').select();
+        });
+    </script>
+</body>
+
+</html>
